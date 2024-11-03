@@ -11,8 +11,8 @@ export default function Home() {
   useEffect(() => {
     const fetchUsers = async () => {
       const response = await fetch("/api/users");
-      const data = await response.json();
-      setUsers(data.users);
+      const users = await response.json();
+      setUsers(users);
     };
     fetchUsers();
   }, []);
@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <div>
       <ul>
-        {users.map((user) => (
+        {users?.map((user) => (
           <li key={user.id}>{user.name}</li>
         ))}
       </ul>
